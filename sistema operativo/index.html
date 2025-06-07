@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi novia hermosa - 1 año mi Mon Amour</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff5f7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff6b9d;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+            margin-bottom: 30px;
+        }
+
+        .hello-kitty {
+            width: 180px;
+            height: auto;
+            margin: 20px auto;
+            transition: all 0.5s;
+            animation: bounce 3s infinite;
+            filter: drop-shadow(0 5px 5px rgba(255, 107, 157, 0.3));
+        }
+
+        .hello-kitty:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .message {
+            background-color: white;
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.15);
+            position: relative;
+            border: 2px solid #ffebf3;
+            animation: fadeIn 2s;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .message p:first-child {
+            font-weight: 600;
+            color: #ff6b9d;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b9d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+            background-size: contain;
+            opacity: 0;
+        }
+
+        .photo-collage {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .photo {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+        }
+
+        .photo:hover {
+            transform: scale(1.1) rotate(3deg);
+            z-index: 10;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .proposal-container {
+            margin: 50px auto;
+            perspective: 1000px;
+        }
+
+        .proposal {
+            margin: 0 auto;
+            padding: 40px;
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: white;
+            border-radius: 30px;
+            width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+            animation: heartbeat 1.5s infinite;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proposal::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(0deg);
+            animation: shine 3s infinite;
+        }
+
+        .proposal:hover {
+            transform: scale(1.05) rotateY(10deg);
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        .proposal-text {
+            font-size: 1.8em;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons {
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: #ff8fab;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            min-width: 150px;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover::after {
+            opacity: 1;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d, #ff477e);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #a5a5a5, #8a8a8a);
+        }
+
+        .hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 245, 247, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s;
+        }
+
+        .celebration.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .celebration img {
+            width: 220px;
+            animation: bounce 1s infinite alternate;
+            margin-bottom: 30px;
+        }
+
+        .celebration h2 {
+            color: #ff6b9d;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .celebration p {
+            font-size: 1.2em;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Animaciones */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.03); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Decoraciones adicionales */
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b9d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .decoration-2 {
+            bottom: 15%;
+            right: 8%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b9d"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+            animation: float 7s infinite ease-in-out reverse;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .message {
+                padding: 20px;
+            }
+
+            .photo {
+                width: 140px;
+                height: 140px;
+            }
+
+            .proposal {
+                width: 240px;
+                padding: 30px;
+            }
+
+            .proposal-text {
+                font-size: 1.5em;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 80%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+<div class="decoration decoration-1"></div>
+<div class="decoration decoration-2"></div>
+
+<div class="container">
+    <h1>¡Feliz 1 año juntitos, mi amorcito!</h1>
+
+    <img src="assets/img/OIP.jpg" alt="Hello Kitty" class="hello-kitty">
+
+    <div class="message">
+        <p>Mi Novia hermosa,</p>
+        <p>Este 1 año juntitos a tu lado han sido los mejores de mi vida. Cada día a tu lado es un regalo y no puedo imaginar mi futuro sin ti , eres una mujer hermosa y eres una niña tan buenitaaa con todos sos un amor de persona mi amorcito.. Te amo muchito muak muaak</p>
+        <p>Me haces muy feliz cada dia me encantas mas me das los mejores dias con tu risa y tus peleas y con tal de escucharte me haces el hombre mas feliz del mundo t amu muchito mi amor y quiero que recuerdes siempre que eres el amor de mi vida y que me encantas mucho , tambien que quiero todo con vos porque te amo con pasitos de medusa y de tortuga. Que cumplamos muchos mas años ya que sos el amor de mi vida jiji. te amo muchito att novio</p>
+    </div>
+
+    <div class="photo-collage">
+        <!-- Reemplaza estas URLs con tus propias fotos -->
+        <img src="assets/img/sally.jpg" class="photo" alt="Nuestros momentos">
+        <img src="assets/img/torneo.jpg" class="photo" alt="Nuestros momentos">
+        <img src="assets/img/pig.jpg" class="photo" alt="Nuestros momentos">
+        <img src="assets/img/dog.jpg" class="photo" alt="Nuestros momentos">
+    </div>
+
+    <div class="proposal-container">
+        <div class="proposal" id="proposal">
+            <div class="proposal-text">¿Amorcito quieres casarte conmigo?</div>
+        </div>
+    </div>
+
+    <div class="buttons hidden" id="buttons">
+        <button id="yesBtn">¡SÍ! 💖</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<div class="celebration" id="celebration">
+    <img src="assets/img/descarga.jpg" alt="Hello Kitty feliz">
+    <h2>¡DIJISTE QUE SÍ! 💍</h2>
+    <p>Este es el comienzo de nuestra vida juntos. Te amo con todo mi corazón.</p>
+</div>
+
+<script>
+    // Crear corazones flotantes
+    function createHearts() {
+        const heartsContainer = document.getElementById('hearts');
+        const heartCount = 20;
+
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+
+            // Posición aleatoria
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+
+            // Tamaño aleatorio
+            const size = Math.random() * 20 + 10;
+            heart.style.width = size + 'px';
+            heart.style.height = size + 'px';
+
+            // Color aleatorio (tonos rosados)
+            const hue = 330 + Math.random() * 30; // Entre 330 y 360 (rosados)
+            heart.style.filter = `hue-rotate(${Math.random() * 60 - 30}deg) brightness(1.2)`;
+
+            // Animación
+            heart.style.animation = `float ${Math.random() * 5 + 3}s infinite ease-in-out`;
+            heart.style.animationDelay = Math.random() * 5 + 's';
+
+            heartsContainer.appendChild(heart);
+
+            // Hacerlos aparecer gradualmente
+            setTimeout(() => {
+                heart.style.opacity = '0.6';
+            }, i * 100);
+        }
+    }
+
+    // Mostrar botones cuando se hace clic en la propuesta
+    document.getElementById('proposal').addEventListener('click', function() {
+        this.classList.add('hidden');
+        const buttons = document.getElementById('buttons');
+        buttons.classList.remove('hidden');
+
+        // Animación de aparición
+        setTimeout(() => {
+            buttons.style.opacity = '1';
+            buttons.style.transform = 'scale(1)';
+        }, 10);
+    });
+
+    // Manejar clic en el botón Sí
+    document.getElementById('yesBtn').addEventListener('click', function() {
+        const celebration = document.getElementById('celebration');
+        celebration.classList.add('show');
+        createHearts();
+
+        // Disparar más corazones
+        setInterval(createHearts, 2000);
+
+        // Confeti adicional
+        for (let i = 0; i < 50; i++) {
+            setTimeout(createHearts, i * 100);
+        }
+    });
+
+    // Manejar clic en el botón No (movimiento divertido)
+    document.getElementById('noBtn').addEventListener('mouseover', function() {
+        const noBtn = this;
+        const maxX = window.innerWidth - noBtn.offsetWidth;
+        const maxY = window.innerHeight - noBtn.offsetHeight;
+
+        // Nueva posición aleatoria que asegure que el botón permanezca visible
+        const x = Math.max(10, Math.min(maxX - 10, Math.random() * maxX));
+        const y = Math.max(10, Math.min(maxY - 10, Math.random() * maxY));
+
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+
+        // Pequeña animación
+        noBtn.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            noBtn.style.transform = 'scale(1)';
+        }, 300);
+    });
+
+    // También mover al hacer clic (por si no funciona el hover en móviles)
+    document.getElementById('noBtn').addEventListener('click', function() {
+        this.dispatchEvent(new Event('mouseover'));
+    });
+
+    // Inicializar corazones al cargar la página
+    window.addEventListener('load', function() {
+        createHearts();
+
+        // Animación de fotos secuencial
+        const photos = document.querySelectorAll('.photo');
+        photos.forEach((photo, index) => {
+            setTimeout(() => {
+                photo.style.animation = 'fadeIn 1s forwards';
+            }, index * 200);
+        });
+
+        // Animación de entrada para el contenedor
+        document.querySelector('.container').style.animation = 'fadeIn 1.5s forwards';
+    });
+</script>
+</body>
+</html>

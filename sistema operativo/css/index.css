@@ -1,0 +1,51 @@
+body {
+    padding-top: 72px;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('https://i.imgur.com/W63BupR.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    min-height: 600px;
+}
+
+.hero-section h1,
+.hero-section p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+section h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+footer {
+    font-size: 0.9rem;
+}
+
+img {
+    max-height: 100px;
+    object-fit: contain;
+}
+
+#biografia img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.logo-equipo {
+    width: 100px; /* Ajusta el tamaño según lo necesites */
+    height: 100px; /* Asegura que el alto sea igual al ancho */
+    object-fit: contain; /* Asegura que la imagen se ajuste sin perder la relación de aspecto */
+}
+
